@@ -1,4 +1,9 @@
 
+/**
+ * 与えられたpromotionIdをもとにDBからpromotionを取得する。
+ * 現在はただ空のpromiseを返す。
+ * @param {Integer} promotionId 
+ */
 function findDirectPromotionByPromotionId(promotionId) {
 
   return Promise.resolve({})

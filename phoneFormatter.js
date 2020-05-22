@@ -1,15 +1,20 @@
 const PNF       = require('google-libphonenumber').PhoneNumberFormat;
 const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 
+/**
+ * 与えられた電話番号を e164形式に変換する。
+ * 例: 080-1234-1234 => +818012341234
+ * @param {Integer} rawNumber 
+ */
 function format(rawNumber) {
 
-  // parse into libphonenumber innstance
+  // libphonenumber japanで初期化 インスタンス化
   let number = phoneUtil.parseAndKeepRawInput(rawNumber, 'JP');
 
-  // validate
+  // 電話番号の検証
   if (!phoneUtil.isValidNumber(number)) throw new Error(`Given phone number is invalid: ${rawNumber}`);
 
-  // format
+  // e164にformat
   return phoneUtil.format(number, PNF.E164)
 
 }
